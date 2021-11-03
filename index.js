@@ -1,18 +1,18 @@
 const express = require('express')
 const cors = require('cors')
+const path = require('path');
 const gptResponse = require('./OpenAI')
 const app = express()
 const port = process.env.PORT || 4000
-const path = require('path');
 
 app.use(express.static('public'))
-app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 app.use(cors())
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('build'));
-  app.get('*', (req, res) => {
+  app.get('/*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
   });
 }
@@ -28,8 +28,5 @@ app.post('/codex', async (req, res) => {
   }
 })
 
-app.use((req, res) => {
-  res.status(404).send('Page not found')
-})
 
 app.listen(port, () => console.log(`Listening on port ${port}`))

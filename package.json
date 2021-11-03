@@ -1,14 +1,14 @@
 {
-  "name": "openai",
-  "version": "1.0.0",
-  "description": "",
+  "name": "hebrew-codex",
+  "version": "1.0.1",
+  "description": "GP3 Codex Auto Code Generator with Hebrew Speech Recognition",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "dev": "concurrently \"nodemon index.js\" \"npm start --prefix client\"",
     "git": "concurrently \"git add .\" \"git commit -m \"updated\"\" \"git push origin main\"",
     "rebuild-client": "rm -rf build && npm i --prefix client && npm run build --prefix client && mv client/build/ build",
-    "heroku": "npm run rebuild-client && npm run git && git push heroku main"
+    "heroku": "concurrently -m=1 \"npm run rebuild-client\"  \"npm run git\"  \"git push heroku main\""
   },
   "keywords": [],
   "author": "",
@@ -17,7 +17,8 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "openai-api": "^1.2.6"
+    "openai-api": "^1.2.6",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "concurrently": "^6.3.0",
