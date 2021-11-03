@@ -1,0 +1,8 @@
+{
+  "short_name": "AutoCode",
+  "name": "GP3 Codex Auto Code Generator with Speech Recognition",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
