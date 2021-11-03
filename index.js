@@ -28,5 +28,8 @@ app.post('/codex', async (req, res) => {
   }
 })
 
+app.use((req, res) => {
+  res.status(404).send('Page not found')
+})
 
 app.listen(port, () => console.log(`Listening on port ${port}`))
