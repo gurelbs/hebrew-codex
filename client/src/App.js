@@ -6,7 +6,7 @@ import InputWithMic from './components/InputWithMic'
 import useLocalStorge from './hooks/useLocalStorge'
 import Backdrop from '@mui/material/Backdrop'
 import CircularProgress from '@mui/material/CircularProgress'
-
+import api from './api'
 export default function App() {
 	const url =
 		process.env.NODE_ENV === 'production'
@@ -30,7 +30,7 @@ export default function App() {
 		async inputType => {
 			try {
 				setLoading(true)
-				const { data } = await axios.post(`${url}?q=${inputType}`)
+				const { data } = await api.post(`codex?q=${inputType}`)
 				setResults(res => `${res}\n\n/*${inputType}*/\n\n${data.answer.trim()}`)
 				setLoading(false)
 			} catch (error) {
